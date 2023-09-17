@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Tracking App</title>
+    <style>
+        body{
+            background-color: rgb(172, 217, 172);
+            cursor: pointer;
+        }
+        input{
+            cursor: pointer;
+            color: green;
+        }
+        .track-btn{
+            border: none;
+    background-color: green;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+        }
+    </style>
+</head>
+<body>
+    <label for="carType">Select car route:</label>
+    <select id="carType">
+        <option value="route"></option>
+        <option value="Nyagatare">Nyagatare</option>
+        <option value="Kirehe">Kirehe</option>
+        <option value="Gatsibo">Gatsibo</option>
+        <option value="Musanze">Musanze</option>
+        <option value="Rubavu">Rubavu</option>
+        <option value="Ngoma">Ngoma</option>
+        <option value="Kayonza">Kayonza</option>
+        <option value="Rwamagana">Rwamagana</option>
+        <option value="Ruhango">Ruhango</option>
+        <option value="Nyanza">Nyanza</option>
+        <option value="Muhanga">Muhanga</option>
+    </select>
+    <button id="trackButton">Track Car</button>
+    <div>
+        <p>Latitude: <span id="latitude">Waiting for location...</span></p>
+        <p>Longitude: <span id="longitude">Waiting for location...</span></p>
+        <p>Car Status: <span id="carStatus">Waiting for tracking data...</span></p>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    document.getElementById("latitude").textContent = latitude;
+                    document.getElementById("longitude").textContent = longitude;
+                });
+            } else {
+                document.getElementById("latitude").textContent = "GPS not supported";
+                document.getElementById("longitude").textContent = "GPS not supported";
+            }
+
+            document.getElementById("trackButton").addEventListener("click", function () {
+                const selectedCar = document.getElementById("carType").value;
+
+                // Simulate tracking data based on the selected car
+                let carStatus;
+                switch (selectedCar) {
+                    case "Nyagatare":
+                        carStatus = "Car is currently at Matimba , Please be patient !!";
+                        break;
+                    case "Kirehe":
+                        carStatus = "Car is currently at Nyakarambi  , Please be patient !!";
+                        break;
+                    case "Gatsibo":
+                        carStatus = "Car is currently at Rwagitima , Please be patient !!";
+                        break;
+                    case "Musanze":
+                        carStatus = "Car is currently at Kamuhoza ,Please be patient !!";
+                        break;
+                    case "Ngoma":
+                        carStatus = "Car is currently at Musamvu , Please be patient !!";
+                        break;
+                    case "Rubavu":
+                        carStatus = "Car is currently at Mu mugi Gisenyi ,Please be patient !!";
+                        break;
+                    case "Kayonza":
+                        carStatus = "Car is currently at Kabarondo , Please be patient !!";
+                        break;
+                    case "Rwamagana":
+                        carStatus = "Car is currently at Ntunga , Please be patient !!";
+                        break;
+                    case "Ruhango":
+                        carStatus = "Car is currently at Kagitumba ,Please be patient !!";
+                        break;
+                    case "Nyanza":
+                        carStatus = "Car is currently at Kagitumba , Please be patient !!";
+                        break;
+                        case "Muhanga":
+                        carStatus = "Car is currently at Kagitumba , Please be patient !!";
+                        break;
+                    default:
+                        carStatus = "Car routes not recognized.";
+                }
+
+                document.getElementById("carStatus").textContent = carStatus;
+            });
+        });
+    </script>
+    <p><a href="book.html"><input type  class="track-btn" value="Continue" size="5"/></a><br/>
+</body>
+</html>

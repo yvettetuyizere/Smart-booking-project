@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Form</title>
+</head>
+<body>
+    <h2>Choose a Payment Method:</h2>
+    <form id="paymentForm">
+        <label>
+            <input type="checkbox" name="paymentMethod" value="Momo"> Momo
+        </label>
+        <label>
+            <input type="checkbox" name="paymentMethod" value="CreditCard"> Credit Card
+        </label>
+        <label>
+            <input type="checkbox" name="paymentMethod" value="VisaCard"> Visa Card
+        </label>
+
+        <div>
+            <label for="amount">Enter Amount:</label>
+            <input type="number" id="amount" name="amount" required></div><br/>
+            <label> Enter number: <input type="number" name="number"><br/>
+                  
+            </label>
+        </div>
+
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function () {
+            const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
+            let selectedPaymentMethod = "";
+
+            for (const input of paymentMethodInputs) {
+                if (input.checked) {
+                    selectedPaymentMethod = input.value;
+                    break;
+                }
+            }
+
+            const amount = document.getElementById("amount").value;
+
+            if (selectedPaymentMethod && amount) {
+                // You can perform further processing or send the data to a server here.
+                const result = `Payment method: ${selectedPaymentMethod}, Amount: ${amount}`;
+                document.getElementById("result").textContent = result;
+            } else {
+                document.getElementById("result").textContent = "Please select a payment method and enter an amount.";
+            }
+        });
+    </script>
+</body>
+</html>

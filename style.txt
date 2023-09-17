@@ -1,0 +1,17 @@
+<style>
+ div{
+background-image:url("roads.jpg");
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center center; 
+}
+
+</style>
+style>
+section{
+background-image:url("roads.jpg");
+background-size:cover;
+background-repeat: no-repeat;
+background-position: center center; 
+}
+</style> 
